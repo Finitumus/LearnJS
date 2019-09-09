@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Red+Hat+Display&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+crossorigin="anonymous"></script>
+<script src="script.js"></script>
+<title>Benachrichtigungen</title>
+<link rel="stylesheet" type="text/css" href="style.css">	
+</head>
+
+<body>
+
+    <h1>Stelle die Benachrichtigungen ein</h1>
+
+    
+    <h3>Füttern</h3>
+    <p>Wie oft soll die Schildkröte gefüttert werden? Empfohlen: einmal alle 3 Tage.</p>Alle <input type="text" id="feed"> Tage</p>
+  
+    <h3>Baden</h3>
+    <p>Wie oft soll die Schildkröte gebadet werden? Empfohlen: einmal alle 7 Tage.</p>Alle <input type="text" id="wash">Tage</p>
+
+    <h3>Terrarium putzen</h3>
+    <p>Wie oft soll das Terrarium geputzt werden? Empfohlen: einmal alle 10 Tage.</p>Alle <input type="text" id="terClean">Tage</p>
+    <p><button onclick="setSettings()">Speichern</button></p>
+
+    <a href="index.html"><h1>Zurück</h1></a>
+<!--- --script>
+function setSettings(){
+setCookie("feedSettings", $("#feed").val(), 12);
+setCookie("washSettings", $("#wash").val(), 12);
+setCookie("terCleanSettings", $("#terClean").val(), 12);
+location.reload();
+}
+</script--->
+
+</body>
+</html>

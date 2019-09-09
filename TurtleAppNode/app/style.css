@@ -1,0 +1,125 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+background-image: linear-gradient(to right top, #13f41d, #00e6a6, #00cffd, #00afff, #0084ff, #0081ff, #007eff, #007bff, #00a3ff, #00c5ff, #00e2ff, #5ffbf3);
+background-repeat: no-repeat;
+font-family: 'Red Hat Display', sans-serif;
+margin-left: auto;
+margin-right: auto;
+text-align: center;
+
+ }
+
+h1 {
+font-size: 30px;
+color: grey;	
+}
+
+a h1:hover {
+color: cornflowerblue;  
+}
+
+h2 {
+  color: grey;	
+  }
+
+h2:hover {
+    color: white;	
+}
+
+a img:hover {
+  filter:opacity(65%);
+  transition: all 0s;	
+}
+
+p {
+font-size: 14pt;
+font-weight: normal;
+
+}
+
+#fuettern { 
+float: right;
+}	
+	
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  max-width: 60%;
+  grid-gap: 15px 15px;	
+  grid-template-columns: auto auto;
+  /* background-color: white;*/
+  padding: 10px;
+  margin: auto;
+}
+
+div#fresstagebuch-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr
+  grid-template-rows: 1fr
+  max-width: 60%;
+  grid-gap: 15px 15px;	
+  grid-template-columns: auto auto;
+  /* background-color: white;*/
+  padding: 10px;
+  margin: auto 15%;
+}
+
+.grid-item {
+  /*background-color: rgba(255, 255, 255, 0.8);*/
+  background-color: white;	
+  border: 5px solid rgba(255, 255, 255, .5);
+  border-radius: 15px 15px 15px 15px; 	
+  padding: 5px;
+  font-size: 30px;
+  text-align: center;  		
+}
+
+#item3 {
+  grid-column: 3 / span 1;
+  grid-row: 1 / span 2;
+  text-align: center;
+  display: inline-block;
+  margin: auto auto;
+}
+
+select#food {
+  width: 80%;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
+}
+
+#fuettern_button {
+  width: 80%;
+  height: 5em;
+  border-radius: 12px;
+  text-align: center;
+  font-weight: normal;
+  background-color: #13f41d;
+  border: none;
+  margin-top: auto;
+  margin-bottom: auto; 
+
+}
+
+#fuettern_button:hover {
+  background-color: #ffa500;
+  color: white;
+  border: 1px solid white;
+}
+
+#fressenzeit {
+	color: white;
+}
+
+#feedStory { 
+font-size: 14pt;
+}

@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Red+Hat+Display&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+crossorigin="anonymous"></script>
+<script src="script.js"></script>
+<title>Fresstagebuch</title>
+<link rel="stylesheet" type="text/css" href="style.css">	
+</head>
+
+<body>
+
+    <div id="fresstagebuch-grid-container">
+            <div class="grid-item" id="fresstagebuch-item1">
+                    <h1>Fresstagebuch</h1>
+
+                    <p id="title_current_day">Heute ist <b><span id="current_day"></span></b></p>
+                    <p id="title_feed_day">Letzte Mahlzeit: <b><span id="feed_food"></b></span> am <b><span id="feed_day"></span></b></p>
+                   
+                
+                    <p>Siehe an, was deine Schildkröte in den letzten Tagen gefressen hat.</p>
+                    <p><div id="feedStory"></div></p>
+                    </div>
+                <div class="grid-item" id="fresstagebuch-item2">
+                        <img alt="Füttere deine Schildkröte" src="img/bon_appetit.jpg" width=50%>
+                        <p>Wähle das richtige Essen für deine Schildkröte, damit es ins Fresstagebuch eingetragen wird.</p>
+
+                        
+
+                        <select id="food">
+                            <option>Karroten</option>
+                            <option>Grass</option>
+                            <option>Wurst</option>
+                            <option>Gurke</option>
+                            <option>Schokolade</option>
+                            <option>Fisch</option>
+                            <option>Pizza</option>
+                            <option>Pommes</option>
+                            <option>Himbeeren</option>
+                            <option>Paprika</option>
+                          </select>
+                          <p>
+                          <button id="fuettern_button" onclick="feed()"><h2>Füttern!</h2></button>
+                          <div id="food_notify"><p></p> </div>
+
+<div class="grid-item" id="fresstagebuch-item3">
+<p>Letztes Baden: <b><span id="last-wash"></span></b></p>
+ <p>Terrarium geputzt: <b> <span id="last-clean"></span></b></p>
+</div>  
+                            </div>
+
+                         
+                    
+
+    </div>
+
+<script>
+
+$( document ).ready(function() {
+var month = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+var currentDay = new Date();
+if(getCookie("lastWash") != ""){
+    $("#last-wash").html(getCookie("lastWash") +". "+ month[getCookie("washMonth")]);
+} else {
+$("#last-wash").html("keine Infos.");
+;
+}
+});
+
+
+$( document ).ready(function() {
+    var month = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+    var currentDay = new Date();
+    if(getCookie("lastTerClean") != ""){
+        $("#last-clean").html(getCookie("lastTerClean") +". "+ month[getCookie("lastTerCleanMonth")]);
+    } else {
+    $("#last-clean").html("keine Infos.");
+    ;
+    }
+    });
+    </script>
+  
+  
+    <a href="index.html"><h1>Zurück</h1></a>
+</body>
+</html>
+

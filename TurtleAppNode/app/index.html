@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Red+Hat+Display&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+crossorigin="anonymous"></script>
+<script src="script.js"></script>
+<title>Turtle App - Home</title>
+<link rel="stylesheet" type="text/css" href="style.css">	
+</head>
+
+<body>
+	
+<div class="grid-container">
+  <div class="grid-item" id="item1">
+      <a href="benachrichtigungen.html"><img alt="Benachrichtigungen einstellen" src="img/alarm_benachrichtigungen.jpg">
+	  <p>
+    <h1>Benachrichtigungen</h1></a></p></div>
+  <div class="grid-item" id="item2">
+      <a href="fresstagebuch.html"><img alt="Fressentagebuch" src="img/Fressentagebuch.jpg">
+	  <p>
+        <h1>Fresstagebuch</h1></a></p></div>
+  <div class="grid-item" id="item4">
+      <a href="arztsuche.html"><img alt="Arztsuche" src="img/arzt_suche1.jpg">
+	  <p><h1>Arztsuche</h1></a></p></div>
+  <div class="grid-item" id="item5">
+	  <a href="https://www.schildkroeten-farm.de/" target="_blank"><img alt="Community" src="img/community.jpg">
+	  <p>
+	  <h1>Community</h1></a></p></div>
+<div id="item3">  
+  <h1 id="fressenzeit">Es ist Zeit zu fressen!</h1>
+<p>
+  <p>Wähle das richtige Essen für deine Schildkröte, damit es ins Fresstagebuch eingetragen wird.</p>
+
+<select id="food">
+    <option>Karroten</option>
+    <option>Grass</option>
+    <option>Wurst</option>
+    <option>Gurke</option>
+    <option>Schokolade</option>
+    <option>Fisch</option>
+    <option>Pizza</option>
+    <option>Pommes</option>
+    <option>Himbeeren</option>
+    <option>Paprika</option>
+
+  </select>
+  <br>
+  <br>
+  <button id="fuettern_button" onclick="feed()"><h2>Füttern</h2></button>
+  <p>
+  <h1 id="fressenzeit">...und für weitere Pflege!</h1>  
+  <button id="fuettern_button" onclick="lastWash()"><h2>Baden</h2></button>
+  <p>
+  <button id="fuettern_button" onclick="lastTerClean()"><h2>Terrarium putzen</h2></button>
+	</div>
+<!---- script <script>
+function lastWash(){
+    var date = new Date();
+    setCookie("lastWash", date.getDate(), 12);
+    location.reload();
+}
+
+function lastTerClean(){
+    var date = new Date();
+    setCookie("lastTerClean", date.getDate(), 12);
+    location.reload();
+} 
+</script>  ---->
+</div>
+</body>
+</html>

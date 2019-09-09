@@ -1,0 +1,15 @@
+{
+  "name": "turtle-app",
+  "version": "1.0.0",
+  "description": "An app about turtles",
+  "main": "turtles.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node turtles.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
