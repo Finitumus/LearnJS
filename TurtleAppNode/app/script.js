@@ -1,4 +1,5 @@
 var month = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
+
 function setCookie(cname, cvalue, exdays) {
   var d = new Date();
   d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -44,34 +45,8 @@ function feed(){
     }
 }
 
-$( document ).ready(function() {
-    var foodDay = getCookie("feedDay");
-    var date = new Date();
-    date = date.getDate();
-if( getCookie("feedSettings") != "" ){
-     if( (date - foodDay) >= getCookie("feedSettings") ){
-         alert("Zeit zum Füttern!");
-     }
-}
-
-if( getCookie("washSettings") != "" ){
-     if( (date - getCookie("lastWash")) >= getCookie("washSettings") ){
-         alert("Wasche die Schildkröte!");
-     }
-}
-
-if( getCookie("terCleanSettings") != "" ){
-     if( (date - getCookie("lastTerClean")) >= getCookie("terCleanSettings") ){
-         alert("Putze das Terrarium!");
-     }
-}
-
-});
-
 console.log(document.cookie);
 // JavaScript Document
-
-
 
 function lastWash(){
     var date = new Date();
@@ -92,6 +67,10 @@ function lastTerClean(){
 $( document ).ready(function() {
   var month = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
   var currentDay = new Date();
+  var foodDay = getCookie("feedDay");  
+  var date = new Date();
+  date = date.getDate();
+
   if(getCookie("feedFood") != ""){
       $("#current_day").html(currentDay.getDate() +". "+ month[currentDay.getMonth()]);
       $("#feed_food").html(getCookie("feedFood"));
@@ -103,24 +82,51 @@ $( document ).ready(function() {
       $("#title_feed_day").html("Noch keine Einträge im Fresstagebuch. Füttere deine Schildkröte, um den Eintrag hinzufügen.");
   };
 
-if( getCookie("feedSettings") != "") { //if feeding settings are set
-    $("#feed").val(getCookie("feedSettings")); //reads the feed settings from the cookie 
-    };   
-    if( getCookie("washSettings") != "") {
-      $("#wash").val(getCookie("washSettings"));
-    };
-    if( getCookie("terCleanSettings") != "") {
-      $("#terClean").val(getCookie("terCleanSettings"));
-    };
-
+    fetch('/readsetting', {method: 'post'}).then(function(response) {  
+      return response.json();  
+    })  
+    .then(function(json) {  
+      console.log('Request successful', json); 
+      if (json.feedSettings !== '') {
+        $("#feed").val(json.feedSettings);
+        if( (date - foodDay) >= json.feedSettings ){
+          alert("Zeit zum Füttern!");
+        }
+      };
+      if (json.washSettings !== '') {
+        $("#wash").val(json.washSettings);
+        if( (date - getCookie("lastWash")) >= json.washSettings){
+          alert("Wasche die Schildkröte!");
+        }
+      };
+      if (json.terCleanSettings !== '') {
+        $("#terClean").val(json.terCleanSettings);
+        if( (date - getCookie("lastTerClean")) >= json.terCleanSettings){
+          alert("Putze das Terrarium!");
+        }
+      };
+    })  
+    .catch(function(error) {  
+      log('Request failed', error)  
+    });
   });
 
 
   function setSettings(){
-    setCookie("feedSettings", $("#feed").val(), 12);
-    setCookie("washSettings", $("#wash").val(), 12);
-    setCookie("terCleanSettings", $("#terClean").val(), 12);
-    location.reload();
-    }
+    let mySet = {
+      'feedSettings': $("#feed").val(),
+      'washSettings': $("#wash").val(),
+      'terCleanSettings': $("#terClean").val()
+    };
+    writeSettings(mySet);
+    location.reload();   
+  }
 
+  function writeSettings(sValue){ // отправляем сообщение серверу, что надо сохранить настройки в файл      
+    fetch('/savesetting', {
+        method: 'post',
+        headers: { 'content-type': 'application/json'},
+        body: JSON.stringify(sValue)      
+   });
+  }
 
