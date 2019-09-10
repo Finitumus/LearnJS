@@ -1,0 +1,1 @@
+{"feedSettings":"8","washSettings":"12","terCleanSettings":"9"}
