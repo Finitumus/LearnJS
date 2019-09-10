@@ -9,8 +9,8 @@ const port = 3000           // и он будет слушать порт 3000
 const app = express() // это наш обработчик запросов
 
 app.use(express.static(__dirname)); // подключили путь к css, js и изображениям - они у нас лежат в той же папке, что и скрипт
-app.use(express.static('files'));
-app.use("/static", express.static(__dirname + "/public"));
+// app.use(express.static('files'));
+// app.use("/static", express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 
 app.get('/', function(req, res) {
@@ -33,8 +33,8 @@ app.get('/arztsuche.html', function(req, res) {
 
 // для кнопки community мы не пишем такой обработчик, потому что там идёт обращение к внешнему сайту, он и так откроется
 
-const logAppend = (fileName, appData) =>  { //adding item to the log file
-    fs.appendFile(                        // appends data to a file, creating it, if not exist
+const logAppend = (fileName, appData) =>  { // добавляем данные в файл
+    fs.appendFile(                        // если файл не существует, создаём его
       fileName,
       appData,
       err => {
@@ -43,8 +43,8 @@ const logAppend = (fileName, appData) =>  { //adding item to the log file
   );
 };
 
-const logWrite = (fileName, appData) =>  { //writing item to the log file
-  fs.writeFile(                        // writes data to a file, creating it, if not exist, and overwriting if exist
+const logWrite = (fileName, appData) =>  { // пишем данные в файл
+  fs.writeFile(                            // создаём файл. если не существует, и перезаписываем, если существует
     fileName,
     appData,
     err => {
@@ -53,21 +53,20 @@ const logWrite = (fileName, appData) =>  { //writing item to the log file
   );
 }
 
-function logRead (fileName) { //reading item from the log file, if it exists 
+function logRead (fileName) {   // читаем содержимое файла
   let fileContent = 'Empty';   
   fileContent = fs.readFileSync(fileName, 'utf8');
   return fileContent;
 }
 
-app.post('/savesetting', (req, res) => {
+app.post('/savesetting', (req, res) => {                      // обрабатываем команду "сохранить настройки в файле"
   logWrite('settings.txt', JSON.stringify(req.body) + '\n');
 });  
 
-app.post('/readsetting', (req, res) => {
+app.post('/readsetting', (req, res) => {                    // обрабатываем команду "прочитать настройки из файла"
   let s = logRead('settings.txt');
   res.send(s); 
 });  
-
 
 
 app.listen(port, hostname, () => {
