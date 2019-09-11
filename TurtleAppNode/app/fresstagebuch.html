@@ -8,7 +8,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"
 integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
 crossorigin="anonymous"></script>
-<script src="script.js"></script>
+
 <title>Fresstagebuch</title>
 <link rel="stylesheet" type="text/css" href="style.css">	
 </head>
@@ -47,29 +47,8 @@ crossorigin="anonymous"></script>
                 </div>  
             </div>
     </div>
-
-<script>
-
-$( document ).ready(function() {
-var month = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"];
-var currentDay = new Date();
-
-    if(getCookie("lastWash") != ""){
-        $("#last-wash").html(getCookie("lastWash") +". "+ month[getCookie("washMonth")]);
-    } else {
-        $("#last-wash").html("keine Infos.");
-    };
-    if(getCookie("lastTerClean") != ""){
-        $("#last-clean").html(getCookie("lastTerClean") +". "+ month[getCookie("lastTerCleanMonth")]);
-    } else {
-        $("#last-clean").html("keine Infos.");
-    }
-});
-
-</script>
-  
-  
     <a href="index.html"><h1>Zurück</h1></a>
+<script src="script.js"></script>
 </body>
 </html>
 
